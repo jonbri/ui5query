@@ -1,0 +1,34 @@
+{
+  "name": "UI5Query",
+  "version": "0.0.1",
+  "description": "OpenUI5 control instance viewer",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server -p 9000",
+    "test": "npm run lint && npm run phantom",
+    "phantom": "node bin/phantom_qunits_exec.js",
+    "lint": "eslint index.js tests.js",
+    "package": "bin/package.sh"
+  },
+  "author": "Jonathan Brink <jonathandavidbrink@gmail.com>",
+  "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonbri/ui5query"
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "http-server": "^0.9.0",
+    "phantomjs": "^2.1.7",
+    "qunitjs": "^2.1.1",
+    "uglify-js": "^2.7.5"
+  },
+  "author": "Jonathan Brink",
+  "keywords": [
+    "debugging",
+    "tool",
+    "OpenUI5",
+    "SAPUI5",
+    "onscreen"
+  ]
+}

@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log*
+bin
+.eslintrc
+.gitignore
+.travis.yml
+index.html
+tests.js

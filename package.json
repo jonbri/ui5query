@@ -1,5 +1,5 @@
 {
-  "name": "UI5Query",
+  "name": "ui5query",
   "version": "0.0.1",
   "description": "OpenUI5 control instance viewer",
   "main": "index.js",
@@ -29,6 +29,7 @@
     "tool",
     "OpenUI5",
     "SAPUI5",
+    "jQuery",
     "onscreen"
   ]
 }

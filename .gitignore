@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log*
+*.js
+README.md
+bin
+.npmignore
+.eslintrc
+.travis.yml
+package.json

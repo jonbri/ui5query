@@ -326,6 +326,21 @@ QUnit.config.reorder = false;
     QUnit.test('target variables', function(assert) {
         assert.strictEqual(ui$.pipe('button').target0.getId(), '__button0', 'target 0 is populated');
     });
+    QUnit.test('borrowed filter', function(assert) {
+        var aResults = ui$.pipe('button').filter(function(oResult) {
+            return oResult.getId() === '__button0';
+        });
+        assert.strictEqual(aResults.length, 1, 'filter worked');
+    });
+    QUnit.test('borrowed map', function(assert) {
+        var aResults = ui$.pipe('button').map(function(oResult) {
+            return oResult.getId();
+        });
+        assert.strictEqual(aResults[0], '__button0', 'map worked');
+    });
+    QUnit.test('length', function(assert) {
+        assert.strictEqual(ui$.pipe('button').length, iHowManyButtons, 'correct length');
+    });
 
 
     QUnit.module('toPipeline api', {

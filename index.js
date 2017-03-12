@@ -262,6 +262,15 @@
 
         _populateSearchTargetVariables(oReturn, aLastResults);
 
+        // borrow properties/functions from Array.prototype
+        // TODO: should I just copy directly from aLastResults?
+        Object.getOwnPropertyNames(Array.prototype).slice(0).filter(function(o) {
+            return jQuery.isFunction(Array.prototype[o]);
+        }).forEach(function(sFunctionName) {
+            oReturn[sFunctionName] = jQuery.proxy(Array.prototype[sFunctionName], _toControl(aLastResults));
+        });
+        oReturn.length = oReturn.toArray().length;
+
         return oReturn;
     }
 

@@ -323,6 +323,9 @@ QUnit.config.reorder = false;
         assert.strictEqual(howManyHighlighting(), iTotalMatches, 'all matches highlighted');
         assert.strictEqual(howManyPopups(), iTotalMatches, 'all popups visible');
     });
+    QUnit.test('target variables', function(assert) {
+        assert.strictEqual(ui$.pipe('button').target0.getId(), '__button0', 'target 0 is populated');
+    });
 
 
     QUnit.module('toPipeline api', {

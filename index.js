@@ -57,14 +57,14 @@
                 return o.sIdMatch !== null || o.sNameMatch !== null;
             });
         console.log(aLastResults.length + ' search results');
-        _populateSearchTargetVariables(aMatches);
+        _populateSearchTargetVariables(ui$, aMatches);
         return _toControl(aMatches);
     }
 
     // 'all' api
     function all() {
         var aMatches = aLastResults =_search();
-        _populateSearchTargetVariables(aMatches);
+        _populateSearchTargetVariables(ui$, aMatches);
         return _toControl(aMatches);
     }
 
@@ -217,25 +217,26 @@
     }
 
     // reset search target variables
-    function _clearSearchTargetVariables() {
-        ui$.target = undefined;
-        delete ui$.target;
+    function _clearSearchTargetVariables(o) {
+        o.target = undefined;
+        delete o.target;
         [0,1,2,3,4,5,6,7,8,9].forEach(function(i) {
-            ui$['target' + i] = undefined;
-            delete ui$['target' + i];
+            o['target' + i] = undefined;
+            delete o['target' + i];
         });
     }
 
+    // o -> the object to attach the variables to
     // aMatches -> o[]
     //   { $element
     //     sIdMatch
     //     sNameMatch }
-    function _populateSearchTargetVariables(aMatches) {
-        _clearSearchTargetVariables();
+    function _populateSearchTargetVariables(o, aMatches) {
+        _clearSearchTargetVariables(o);
         if (aMatches.length > 0) {
-            ui$.target = aMatches[0].$element.control()[0];
+            o.target = aMatches[0].$element.control()[0];
             aMatches.slice(0,10).forEach(function(oMatch, i) {
-                ui$['target' + i] = oMatch.$element.control()[0];
+                o['target' + i] = oMatch.$element.control()[0];
             });
         }
     }
@@ -258,6 +259,8 @@
                 return _toPipeline();
             };
         });
+
+        _populateSearchTargetVariables(oReturn, aLastResults);
 
         return oReturn;
     }
